@@ -1,13 +1,38 @@
 ﻿@page "/"
 
     <div class="container">
+        
         <h3 class="g1">Welcome to Quadro</h3>
 
         <h4 class="g3">ax<sup>2</sup> + bx + c = 0</h4>
+        <select class="g4" @bind="a">
 
-        <h2 class="g4">a:  <input type="text" @bind="a" /></h2>
-        <h2 class="g5">b:  <input type="text" @bind="b" /></h2>
-        <h2 class="g6">c:  <input type="text" @bind="c" /></h2>
+            @for (int i = 0; i < aa.Length; i++)
+            {
+
+                <option value="@aa[i]"> a: @aa[i]</option>
+            }
+        </select>
+
+        <select class="g5" @bind="b">
+
+            @for (int i = 0; i < aa.Length; i++)
+            {
+                <option value="@aa[i]">b: @aa[i]</option>
+            }
+        </select>
+
+        <select class="g6" @bind="c">
+
+            @for (int i = 0; i < aa.Length; i++)
+            {
+                <option value="@aa[i]">c: @aa[i]</option>
+            }
+        </select>
+
+        @*<h2 class="g4">a:  <input type="" @bind="a" /></h2>*@
+        @*<h2 class="g5">b:  <input type="text" @bind="b" /></h2>
+        <h2 class="g6">c:  <input type="text" @bind="c" /></h2>*@
 
         <input class="g7 btn-success" type="button" value="Solve" @onclick="Solve" />
 
@@ -18,18 +43,20 @@
 
 @code
 {
-    private int a = 0;
+    private int a;
     private int b = 0;
     private int c = 0;
 
+    private int[] aa = { 1,2,3,4,5,6,7,8,9,-1,-2,-3,-4,-5,-6,-7,-8,-9 };
+
     private double x1=0;
     private double x2=0;
-    
+
     private void Solve()
     {
-       
-        x1 = (b * -1 + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a);
 
-        x2 = (b * -1 - Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a);
+        x1 = Math.Round((b * -1 + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a),2);
+
+        x2 = Math.Round((b * -1 - Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a),2);
     }
 }
