@@ -1,5 +1,35 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+    <div class="container">
+        <h3 class="g1">Welcome to Quadro</h3>
 
-Welcome to your new app.
+        <h4 class="g3">ax<sup>2</sup> + bx + c = 0</h4>
+
+        <h2 class="g4">a:  <input type="text" @bind="a" /></h2>
+        <h2 class="g5">b:  <input type="text" @bind="b" /></h2>
+        <h2 class="g6">c:  <input type="text" @bind="c" /></h2>
+
+        <input class="g7 btn-success" type="button" value="Solve" @onclick="Solve" />
+
+        <h2 class="g8"> x1 = @x1</h2>
+        <h2 class="g9"> x2 = @x2</h2>
+
+    </div>
+
+@code
+{
+    private int a = 0;
+    private int b = 0;
+    private int c = 0;
+
+    private double x1=0;
+    private double x2=0;
+    
+    private void Solve()
+    {
+       
+        x1 = (b * -1 + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a);
+
+        x2 = (b * -1 - Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / (2*a);
+    }
+}
